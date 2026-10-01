@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" role="img" aria-labelledby="sg-title">
-  <title id="sg-title">СГ — Светлана Герасюк</title>
-  <!-- Знак для тёмного фона. «С» и «Г» вместе складываются в рамку слайда, квадрат — её последний угол -->
-  <g fill="none" stroke="#F6F4EF" stroke-width="3">
-    <path d="M18.5 9h-6a8 8 0 0 0-8 8v6a8 8 0 0 0 8 8h6"/>
-    <path d="M24 32.5V9h11.5"/>
-  </g>
-  <rect x="30.5" y="27.5" width="5" height="5" fill="#8FA89A"/>
-</svg>
