@@ -106,6 +106,20 @@ a { color: var(--color-accent); }
 }
 .wordmark--small { font-size: 1.25rem; }
 
+/* Логотип «СГ» рядом с именем: assets/logo/logo-sg.png */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+.brand__mark {
+  display: block;
+  flex: none;
+  width: auto;
+  height: 44px;
+}
+
 /* Шапка — продолжение тёмного первого экрана */
 .site-header {
   background: var(--color-ink);
@@ -183,18 +197,16 @@ a { color: var(--color-accent); }
 .showcase { grid-column: 6 / span 7; }
 .showcase__row {
   display: grid;
-  grid-template-columns: 1.55fr 1fr 1fr;
-  align-items: end;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   gap: var(--s2);
 }
 .showcase__slide {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 1122 / 1402;
   border-radius: 2px;
-}
-.showcase__slide--main {
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
 }
 .showcase figcaption {
   margin-top: var(--s3);
@@ -202,6 +214,20 @@ a { color: var(--color-accent); }
   border-top: 1px solid var(--line-dark);
   color: var(--color-sage);
   font-size: 0.9375rem;
+}
+
+/* ---------- Мягкий свет на тёмных секциях ---------- */
+/* Крупные размытые пятна в палитре сайта: Петроль, Шалфей, Песок. Без анимации */
+.hero {
+  background-image:
+    radial-gradient(ellipse 46% 48% at 80% 50%, rgba(31, 92, 99, 0.42), transparent),
+    radial-gradient(ellipse 38% 44% at 10% 54%, rgba(143, 168, 154, 0.09), transparent),
+    radial-gradient(ellipse 30% 36% at 48% 62%, rgba(217, 203, 179, 0.05), transparent);
+}
+.case {
+  background-image:
+    radial-gradient(ellipse 44% 46% at 14% 34%, rgba(31, 92, 99, 0.4), transparent),
+    radial-gradient(ellipse 40% 42% at 84% 60%, rgba(143, 168, 154, 0.08), transparent);
 }
 
 /* ---------- Общие секции ---------- */
@@ -536,21 +562,33 @@ a { color: var(--color-accent); }
   .case__facts ul { grid-template-columns: 1fr; }
 }
 
+/* Узкий планшет: шапка плотнее, чтобы меню и кнопка остались в одну строку */
+@media (max-width: 900px) {
+  .site-header__inner { gap: 20px; }
+  .site-header .wordmark { font-size: 1.25rem; }
+  .brand { gap: 12px; }
+  .brand__mark { height: 38px; }
+  .site-nav { gap: var(--s2); }
+  .site-nav a { white-space: nowrap; }
+}
+
 /* ---------- Мобильная версия ---------- */
 @media (max-width: 720px) {
   :root { --gutter: 16px; }
   .site-nav { display: none; }
-  .site-header__inner { justify-content: space-between; gap: var(--s2); min-height: 64px; }
+  .site-header__inner { justify-content: space-between; gap: 10px; min-height: 64px; }
   .wordmark { font-size: 1.1875rem; }
-  .btn--small { padding: 9px 14px; font-size: 0.875rem; }
+  .site-header .wordmark { font-size: 1.125rem; }
+  .brand { gap: 6px; }
+  .brand__mark { height: 28px; }
+  .btn--small { padding: 9px 12px; font-size: 0.875rem; white-space: nowrap; }
 
   .hero { padding: var(--s4) 0 var(--s5); }
   .hero h1 { margin-top: var(--s2); }
   .hero__grid { margin-top: var(--s4); padding-top: var(--s3); }
   .hero__lead { font-size: 1.0625rem; }
   .showcase { margin-top: var(--s4); }
-  .showcase__row { grid-template-columns: 1.35fr 1fr; gap: 12px; }
-  .showcase__slide--third { display: none; }
+  .showcase__row { gap: var(--s1); }
 
   .section, .case, .cta { padding: var(--s5) 0; }
   .section__title { margin-bottom: var(--s4); }
@@ -593,4 +631,17 @@ a { color: var(--color-accent); }
   .result__list h3 { font-size: 1.3125rem; }
 
   .cta__row { margin-top: var(--s4); padding-top: var(--s3); }
+}
+
+/* Узкие телефоны: шапка плотнее, чтобы знак, имя и кнопка остались в одной строке */
+@media (max-width: 374px) {
+  .site-header .wordmark { font-size: 1.0625rem; }
+  .brand__mark { height: 26px; }
+  .btn--small { padding: 9px 10px; }
+}
+
+/* Совсем узкие экраны: знак уступает место имени и кнопке */
+@media (max-width: 359px) {
+  .brand__mark { display: none; }
+  .btn--small { white-space: normal; }
 }
